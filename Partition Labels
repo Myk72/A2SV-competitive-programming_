@@ -1,0 +1,16 @@
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+       ind={}
+       result=[]
+       l,r=0,0
+       for count,item in enumerate(s):
+           ind[item]=count
+       for count,item in enumerate(s):
+
+            l+=1
+            if ind[item]>r:
+                r=ind[item]
+            if count==r:
+                result.append(l)
+                l=0
+       return result
