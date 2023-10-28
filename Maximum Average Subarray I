@@ -1,0 +1,15 @@
+class Solution:
+    from statistics import mean
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        if len(nums) == 1:
+            return float(nums[0])
+        l,r=0,k
+        average=mean(nums[:k])
+        max_av = average
+        while r < len(nums):
+            average = average - float(nums[l]) / k
+            average = average + float(nums[r]) / k
+            max_av = max(max_av, average)
+            l += 1
+            r+= 1
+        return max_av
