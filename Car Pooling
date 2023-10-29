@@ -1,0 +1,15 @@
+class Solution:
+    def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
+        pool = []
+        for item, l, r in trips:
+            pool.append((l, 1, item))
+            pool.append((r, -1, item))
+        pool.sort()
+        for i, x, c in pool:
+            if x == 1:
+                capacity -= c
+            else:
+                capacity += c
+            if capacity < 0: return False
+
+        return True
