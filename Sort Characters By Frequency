@@ -1,0 +1,6 @@
+counts = {}
+        for item in s:
+            counts[item] = counts.get(item, 0) + 1
+        count = sorted(counts.items(), key=lambda c: c[1], reverse=True)
+        result = "".join(c[0] * c[1] for c in count)
+        return result
