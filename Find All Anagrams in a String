@@ -1,0 +1,17 @@
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        result = []
+        count = collections.Counter(p)
+        n = len(p)
+        for i, item in enumerate(s):
+            count[item] -= 1
+            if count[item] >= 0:
+                n -= 1
+            if i >= len(p):
+                count[s[i - len(p)]] += 1
+                if count[s[i - len(p)]] > 0:
+                    n += 1
+            if n == 0:
+                result.append(i - len(p) + 1)
+
+        return result
