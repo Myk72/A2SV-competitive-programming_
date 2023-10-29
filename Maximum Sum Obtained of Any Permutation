@@ -1,0 +1,20 @@
+class Solution:
+    def maxSumRangeQuery(self, nums: List[int], requests: List[List[int]]) -> int:
+        numb,n = 1000000007,len(nums)
+        arr = [0] * (n + 1)
+        
+        for i, item in requests: 
+            arr[i] += 1
+            arr[item + 1] -= 1
+            
+        for i in range(1, n + 1):
+            arr[i] += arr[i - 1]
+
+        nums.sort(reverse=True)
+        arr.sort(reverse=True)
+        result = 0
+        for i, x in enumerate(nums):
+            result += x * arr[i]
+            result %= numb
+
+        return result
