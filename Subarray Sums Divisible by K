@@ -1,0 +1,13 @@
+class Solution:
+    def subarraysDivByK(self, nums: List[int], k: int) -> int:
+        result = 0
+        left = 0
+        count = [0] * k
+        count[0] = 1
+
+        for item in nums:
+            left = (left + item) % k
+            result += count[left]
+            count[left] += 1
+
+        return result
