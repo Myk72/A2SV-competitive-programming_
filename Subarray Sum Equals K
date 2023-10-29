@@ -1,0 +1,12 @@
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        collection = collections.defaultdict(int)
+        collection[0] = 1
+        i = result = 0
+        for item in nums: 
+            i += item
+            if i - k in collection:
+                result += collection[i - k]
+            collection[i] += 1
+
+        return result
