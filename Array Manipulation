@@ -1,0 +1,15 @@
+def arrayManipulation(n, queries):
+    listing=[0]*(n+1)
+    for item in queries:
+        l=item[0]-1
+        r=item[1]
+        offset=item[2]
+        listing[l ]+=offset
+        if r<len(listing ):
+            listing [r]-=offset
+    maxs=0
+    summation=0
+    for i in range (n+1):
+        summation+=listing[i]
+        maxs=max(maxs,summation)
+    return maxs
